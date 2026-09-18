@@ -1,3 +1,5 @@
+from __future__ import annotations
+
 from config.settings import MAX_EV_SANITY, MIN_EV_THRESHOLD
 
 
