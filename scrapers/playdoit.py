@@ -169,11 +169,13 @@ class PlaydoitScraper(BaseScraper):
 
                         if target_market == "1X2":
                             sel_type = sel.get("SelectionTypeId")
-                            if sel_type == 1 or "1" in raw_sel_name or "home" in raw_sel_name.lower():
+                            raw_lower = raw_sel_name.lower().strip()
+
+                            if sel_type == 1 or raw_lower in ["1", "home", "local"]:
                                 norm_selection = "Home"
-                            elif sel_type == 2 or "draw" in raw_sel_name.lower() or "empate" in raw_sel_name.lower() or "x" in raw_sel_name.lower():
+                            elif sel_type == 2 or raw_lower in ["x", "draw", "empate"]:
                                 norm_selection = "Draw"
-                            elif sel_type == 3 or "2" in raw_sel_name or "away" in raw_sel_name.lower():
+                            elif sel_type == 3 or raw_lower in ["2", "away", "visitante"]:
                                 norm_selection = "Away"
                             else:
                                 col = sel.get("ColumnNum") or sel.get("MobileColumnNum")
